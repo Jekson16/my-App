@@ -46,7 +46,7 @@ export default function ContactSection() {
         <motion.div className={styles.divider} variants={itemVariants} />
 
         <motion.a
-          href="/Jekson-Nababan-CV.pdf"
+          href="/CV_Jekson_Nababan (2).pdf"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.cvCard}
