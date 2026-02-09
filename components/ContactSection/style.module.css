@@ -1,4 +1,3 @@
-/* Section utama */
 .section {
   width: 100%;
   display: flex;
@@ -7,7 +6,6 @@
   color: white;
 }
 
-/* Container dalam */
 .inner {
   width: 100%;
   max-width: 880px;
@@ -15,7 +13,6 @@
   text-align: center;
 }
 
-/* Kicker */
 .kicker {
   font-size: 0.7rem;
   letter-spacing: 0.24em;
@@ -24,7 +21,6 @@
   margin-bottom: 14px;
 }
 
-/* Title */
 .title {
   font-size: clamp(1.9rem, 4vw, 2.6rem);
   font-weight: 400;
@@ -32,7 +28,6 @@
   margin-bottom: 40px;
 }
 
-/* Email Link */
 .email {
   display: inline-block;
   font-size: 1.05rem;
@@ -48,7 +43,6 @@
   border-color: rgba(255, 255, 255, 0.7);
 }
 
-/* Divider */
 .divider {
   margin: 52px auto 0;
   width: 32px;
@@ -56,7 +50,6 @@
   background: rgba(255, 255, 255, 0.22);
 }
 
-/* CV Card - Styling baru untuk membuatnya seperti kartu */
 .cvCard {
   display: inline-block;
   margin-top: 36px;
@@ -72,7 +65,7 @@
 .cvCard:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px); /* Efek lift ringan */
+  transform: translateY(-2px);
 }
 
 .cvLabel {
@@ -93,7 +86,46 @@
   background: rgba(255, 255, 255, 0.28);
 }
 
-/* Footer */
+/* SOCIAL LINKS */
+.socials {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.socials a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.socials a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.socials a:hover {
+  color: white;
+}
+
+.socials a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 .footer {
   margin-top: 64px;
   display: flex;
@@ -102,14 +134,13 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* Mobile Responsivitas */
 @media (max-width: 768px) {
   .inner {
     padding: 72px 20px 56px;
   }
 
   .title {
-    font-size: clamp(1.5rem, 5vw, 2.2rem); /* Penyesuaian font lebih halus */
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
     margin-bottom: 32px;
   }
 
@@ -118,13 +149,95 @@
   }
 
   .cvCard {
-    padding: 10px 16px; /* Padding lebih kecil untuk mobile */
+    padding: 10px 16px;
+  }
+
+  .socials {
+    gap: 18px;
+    font-size: 0.7rem;
   }
 
   .footer {
     flex-direction: column;
     gap: 12px;
     text-align: center;
-    margin-top: 48px; /* Spacing lebih rapat */
+    margin-top: 48px;
+  }
+}
+.footer {
+  margin-top: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.location {
+  flex: 1;
+  text-align: left;
+}
+
+.copy {
+  flex: 1;
+  text-align: right;
+}
+
+/* SOCIAL ICONS */
+/* SOCIAL ICONS */
+.socialIcons {
+  display: flex;
+  gap: 26px;
+  justify-content: center;
+  flex: 1;
+}
+
+.socialIcons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.55); /* default putih redup */
+  transition: transform 0.25s ease, color 0.25s ease, filter 0.25s ease;
+}
+
+/* ICON SIZE LEBIH BESAR */
+.socialIcons svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* HOVER ANIMATION */
+.socialIcons a:hover {
+  transform: translateY(-4px) scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.25));
+}
+
+/* BRAND COLOR MUNCUL SAAT HOVER */
+.socialIcons a[aria-label="Instagram"]:hover {
+  color: #E1306C;
+}
+
+.socialIcons a[aria-label="LinkedIn"]:hover {
+  color: #0A66C2;
+}
+
+.socialIcons a[aria-label="GitHub"]:hover {
+  color: #ffffff;
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 18px;
+  }
+
+  .location,
+  .copy {
+    text-align: center;
   }
 }
