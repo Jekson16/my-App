@@ -1,41 +1,41 @@
-'use client';
+"use client"
 
-import { useEffect, useRef, ReactNode } from 'react';
-import LocomotiveScroll from 'locomotive-scroll';
+import { useEffect, useRef } from "react"
+import type LocomotiveScroll from "locomotive-scroll"
 
-interface SmoothScrollProps {
-  children: ReactNode;
-}
-
-export default function SmoothScroll({ children }: SmoothScrollProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null);
+export default function SmoothScroll({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null)
 
   useEffect(() => {
-    // Pastikan kode hanya jalan di browser
-    if (typeof window === 'undefined') return;
+    if (!scrollRef.current) return
 
-    // Pastikan element sudah ada
-    if (!scrollRef.current) return;
+    let scroll: any
 
-    // Initialize Locomotive Scroll
-    locomotiveScrollRef.current = new LocomotiveScroll({
-      el: scrollRef.current,
-      smooth: true,
-      lerp: 0.1,
-    });
+    const initScroll = async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default
 
-    // Cleanup function
+      scroll = new LocomotiveScroll({
+        el: scrollRef.current as HTMLElement,
+        smooth: true,
+        lerp: 0.08,
+      } as any)
+
+      locomotiveScrollRef.current = scroll
+    }
+
+    initScroll()
+
     return () => {
       if (locomotiveScrollRef.current) {
-        locomotiveScrollRef.current.destroy();
+        locomotiveScrollRef.current.destroy()
       }
-    };
-  }, []);
+    }
+  }, [])
 
-  return (
-    <div ref={scrollRef} data-scroll-container>
-      {children}
-    </div>
-  );
+  return <div ref={scrollRef}>{children}</div>
 }
