@@ -130,7 +130,7 @@ const HeroSection = () => {
       <div className={styles.description}>
         <HeroArrow />
         <p>Freelance</p>
-        <p>Designer & Developer</p>
+        <p>Front end Developer</p>
       </div>
     </motion.section>
   );
